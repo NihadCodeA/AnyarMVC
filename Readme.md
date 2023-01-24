@@ -1,3 +1,3 @@
-#Admin panel 
-##Username = Admin
-##Password = Admin123
+Admin panel : 
+Username = Admin , 
+Password = Admin123
