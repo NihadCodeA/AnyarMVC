@@ -1,0 +1,81 @@
+﻿@model List<Team>
+@{
+    int count = 0;
+}
+<style>
+    .icon-container {
+        display: none;
+        position: absolute;
+        width:300px;
+        height:100px;
+        background: rgba(255, 255, 255, 0.21);
+        border-radius: 4px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.3px);
+        -webkit-backdrop-filter: blur(6.3px);
+        border: 1px solid rgba(255, 255, 255, 0.38);
+    }
+
+    .icon-container:hover {
+         display: flex;
+         justify-content:center;
+         align-items:center;
+     }
+
+    .hover-icon:hover + .icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div style="margin-left:32px;margin-right:32px;">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>Teams</div>
+        <div><a class="btn btn-success" asp-controller="team" asp-action="create">+Add</a></div>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fullname</th>
+                    <th scope="col">Postion</th>
+                    <th scope="col">Order</th>
+                    <th scope="col">Icons</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">update</th>
+                    <th scope="col">delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Team team in Model)
+                {
+                    count++;
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@team.Fullname</td>
+                        <td>@team.Postion</td>
+                        <td>@team.Order</td>
+                        <td>
+                            <div class="hover-icon">Icons ↓</div>
+                            <div class="icon-container">
+                                @foreach(var icon in team.SocialMediaAccounts){
+                                    <a class="mx-2" href="@icon.SocialMediaLink">@icon.SocialMediaIcon</a>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <img style="max-width:150px;max-height:150px;" src="~/uploads/teams/@team.Image" />
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="team" asp-action="update" asp-route-id="@team.Id">update</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" asp-controller="team" asp-action="delete" asp-route-id="@team.Id">delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@model TeamSocialMediaAccount
+<div class="container">
+    <div>
+        <form asp-action="update" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-4">
+                    <label asp-for="SocialMediaLink">SocialMediaLink</label>
+                    <input asp-for="SocialMediaLink" class="form-control" placeholder="SocialMediaLink">
+                    <span class="text-danger" asp-validation-for="SocialMediaLink"></span>
+                </div>
+                <div class="col-4">
+                    <label asp-for="SocialMediaIcon">Postion</label>
+                    <input asp-for="SocialMediaIcon" class="form-control" placeholder="SocialMediaIcon">
+                    <span class="text-danger" asp-validation-for="SocialMediaIcon"></span>
+                </div>
+                <div class="col-4">
+                    <label asp-for="TeamId">Team social media account</label>
+                    <select asp-for="TeamId" class="form-control"
+                            asp-items="@(new SelectList(ViewBag.Teams,"Id","Fullname"))"></select>
+                    <span class="text-danger" asp-validation-for="TeamId"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

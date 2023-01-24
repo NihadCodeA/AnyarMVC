@@ -1,0 +1,41 @@
+﻿@model List<TeamSocialMediaAccount>
+@{
+    int count = 0;
+}
+<div style="margin-left:32px;margin-right:32px;">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>Teams</div>
+        <div><a class="btn btn-success" asp-controller="socialmediaaccount" asp-action="create">+Add</a></div>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Person</th>
+                    <th scope="col">SocialMediaLink</th>
+                    <th scope="col">SocialMediaIcon</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var teamSM in Model)
+                {
+                    count++;
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@teamSM.Team.Fullname</td>
+                        <td>@teamSM.SocialMediaLink</td>
+                        <td>@teamSM.SocialMediaIcon</td>
+                        
+                        <td>
+                            <a class="btn btn-primary" asp-controller="SocialMediaAccount" asp-action="update" asp-route-id="@teamSM.Id">update</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" asp-controller="SocialMediaAccount" asp-action="delete" asp-route-id="@teamSM.Id">delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
