@@ -1,10 +1,12 @@
 ﻿using AnyarMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnyarMVC.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles ="Admin")]
     public class DashboardController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

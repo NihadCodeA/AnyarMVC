@@ -67,7 +67,8 @@
                     {
                         <li style="color:white;">
                             <div>@User.Identity.Name</div>
-                            <div ><a class="nav-link scrollto" asp-controller="account" asp-action="logout">Logout</a></div>
+                            <div><a class="nav-link scrollto" asp-area="manage" asp-controller="dashboard" asp-action="index">Admin panel</a></div>
+                            <div><a class="nav-link scrollto" asp-controller="account" asp-action="logout">Logout</a></div>
                             </li>
                     }
                     else
